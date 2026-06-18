@@ -408,15 +408,10 @@ function App() {
       if (res.ok && data.prediction) {
         setPrediction(data.prediction);
 
-        const seed = data.prediction.length + (imageDetails?.name.length || 0);
-        const confidence = (89.5 + (seed % 95) / 10).toFixed(1);
-
         setDiagnosticMeta({
-          confidence: `${confidence}%`,
           latency: `${durationMs} ms`,
           timestamp: new Date().toLocaleString(),
-          modelName: "Folia-2 (ResNet50)",
-          reportId: `DX-${Math.floor(100000 + (seed * 123) % 900000)}`
+          modelName: "Folia-2 (ResNet50)"
         });
       } else {
         setPrediction(`Error: ${data.error || 'Server returned invalid response.'}`);
@@ -614,18 +609,18 @@ function App() {
                     <div className="space-y-6">
                       {/* Technical metadata */}
                       {diagnosticMeta && (
-                        <div className="bg-zinc-50 border border-zinc-200 rounded-lg p-4 text-xs font-mono text-zinc-600 grid grid-cols-2 gap-y-2.5 gap-x-6">
+                        <div className="bg-zinc-50 border border-zinc-200 rounded-lg p-4 text-xs font-mono text-zinc-600 grid grid-cols-3 gap-4">
                           <div>
-                            <span className="text-zinc-400 font-bold uppercase">Report ID:</span> {diagnosticMeta.reportId}
+                            <span className="text-zinc-400 font-bold uppercase block mb-0.5">Date</span>
+                            <span className="text-zinc-800 font-semibold">{diagnosticMeta.timestamp}</span>
                           </div>
                           <div>
-                            <span className="text-zinc-400 font-bold uppercase">Date:</span> {diagnosticMeta.timestamp}
+                            <span className="text-zinc-400 font-bold uppercase block mb-0.5">Engine</span>
+                            <span className="text-zinc-800 font-semibold">{diagnosticMeta.modelName}</span>
                           </div>
                           <div>
-                            <span className="text-zinc-400 font-bold uppercase">Engine:</span> {diagnosticMeta.modelName}
-                          </div>
-                          <div>
-                            <span className="text-zinc-400 font-bold uppercase">Latency:</span> {diagnosticMeta.latency}
+                            <span className="text-zinc-400 font-bold uppercase block mb-0.5">Latency</span>
+                            <span className="text-zinc-800 font-semibold">{diagnosticMeta.latency}</span>
                           </div>
                         </div>
                       )}
@@ -698,13 +693,7 @@ function App() {
                         <p className="text-sm text-zinc-500 italic">No further entries found for: {prediction}</p>
                       )}
 
-                      {/* Confidence footer */}
-                      {diagnosticMeta && (
-                        <div className="border-t border-zinc-200 pt-5 flex items-center justify-between text-sm text-zinc-600">
-                          <span>Statistical Confidence</span>
-                          <span className="font-bold text-black">{diagnosticMeta.confidence}</span>
-                        </div>
-                      )}
+
                     </div>
                   )}
                 </div>
