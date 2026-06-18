@@ -555,10 +555,13 @@ function App() {
                 <div>
                   <span className="text-xs font-bold text-black block border-b border-zinc-200 pb-2 mb-2">Tomatoes</span>
                   <ul className="text-xs text-zinc-600 space-y-2">
-                    <li>Blights & Spots</li>
-                    <li>Leaf Molds</li>
-                    <li>Mosaic Viruses</li>
+                    <li>Bacterial Spot</li>
+                    <li>Early & Late Blight</li>
+                    <li>Leaf Mold</li>
+                    <li>Septoria Leaf Spot</li>
+                    <li>Target Spot</li>
                     <li>Spider Mites</li>
+                    <li>Mosaic & Yellow Leaf Curl</li>
                     <li>Healthy status</li>
                   </ul>
                 </div>
