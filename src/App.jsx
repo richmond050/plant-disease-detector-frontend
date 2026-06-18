@@ -588,6 +588,10 @@ function App() {
 
               {loading && (
                 <div className="flex-1 flex flex-col items-center justify-center text-center p-12 bg-zinc-50 border border-zinc-200 rounded-lg">
+                  <div className="relative flex items-center justify-center mb-5 w-12 h-12">
+                    <div className="absolute inset-0 border-2 border-zinc-200 border-t-black rounded-full animate-spin"></div>
+                    <Leaf className="w-5 h-5 text-black animate-pulse" />
+                  </div>
                   <p className="text-sm font-bold text-black mb-1">Processing Sample</p>
                   <p className="text-xs text-zinc-500 max-w-[240px] leading-relaxed">
                     Extracting morphological features and running classifier models...
